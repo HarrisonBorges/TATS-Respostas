@@ -1,0 +1,90 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package financiamento;
+
+import financiamento.Proposta;
+import java.util.List;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Harrison
+ */
+public class CalculadoraTest {
+
+    public CalculadoraTest() {
+    }
+
+    @Test
+    public void testeLimite1000() {
+        Calculadora c = new Calculadora();
+        List<Proposta> propostas = c.calcular(500.00f, 800.00f);
+        assertEquals(2, propostas.size());
+
+        Proposta p1 = propostas.get(0);
+        Proposta p2 = propostas.get(1);
+
+        assertEquals(1600f, p1.getTotal(), 0.01);
+        assertEquals(2, p1.getNumeroParcelas());
+        assertEquals(800f, p1.getValorParcelas(), 0.01);
+
+        assertEquals(1600f, p2.getTotal(), 0.01);
+        assertEquals(3, p2.getNumeroParcelas());
+        assertEquals(533.33f, p2.getValorParcelas(), 0.01);
+    }
+
+    @Test
+    public void testeLimite1001a5000() {
+        Calculadora c = new Calculadora();
+        List<Proposta> propostas = c.calcular(2000f, 1800.00f);
+        assertEquals(3, propostas.size()); // retorno de 3 propostas
+
+        Proposta p1 = propostas.get(0);
+        Proposta p2 = propostas.get(1);
+        Proposta p3 = propostas.get(2);
+
+        assertEquals(2340f, p1.getTotal(), 0.01);
+        assertEquals(2, p1.getNumeroParcelas());
+        assertEquals(1170f, p1.getValorParcelas(), 0.01);
+
+        assertEquals(2700f, p2.getTotal(), 0.01);
+        assertEquals(4, p2.getNumeroParcelas());
+        assertEquals(675f, p2.getValorParcelas(), 0.01);
+
+        assertEquals(2700f, p3.getTotal(), 0.01);
+        assertEquals(10, p3.getNumeroParcelas());
+        assertEquals(270f, p3.getValorParcelas(), 0.01);
+    }
+
+    @Test
+    public void testeAcima5000() {
+        Calculadora c = new Calculadora();
+        List<Proposta> propostas = c.calcular(10000f, 5500.00f);
+        assertEquals(4, propostas.size());
+
+        Proposta p1 = propostas.get(0);
+        Proposta p2 = propostas.get(1);
+        Proposta p3 = propostas.get(2);
+        Proposta p4 = propostas.get(3);
+
+        assertEquals(6050f, p1.getTotal(), 0.01);
+        assertEquals(2, p1.getNumeroParcelas());
+        assertEquals(3025f, p1.getValorParcelas(), 0.01);
+
+        assertEquals(7150f, p2.getTotal(), 0.01);
+        assertEquals(4, p2.getNumeroParcelas());
+        assertEquals(1787.5, p2.getValorParcelas(), 0.01);
+
+        assertEquals(7150f, p3.getTotal(), 0.01);
+        assertEquals(10, p3.getNumeroParcelas());
+        assertEquals(715f, p3.getValorParcelas(), 0.01);
+
+        assertEquals(7700f, p4.getTotal(), 0.01);
+        assertEquals(20, p4.getNumeroParcelas());
+        assertEquals(385f, p4.getValorParcelas(), 0.01);
+    }
+}

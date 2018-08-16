@@ -5,21 +5,22 @@ package financiamento;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Harrison
  */
-/*getValor parcela(){
-return / numParcelas();
-} */
 
-class Proposta {
+public class Proposta {
 
-    public Proposta(float pValorTotal, int pNumeroParcelas){
-    
-        numeroParcelas = pNumeroParcelas;
+    Proposta() {
+
     }
+
+    Proposta(float pTotal, int pNumeroParcelas) {
+        this.total = pTotal;
+        this.numeroParcelas = pNumeroParcelas;
+    }
+
     /**
      * @return the total
      */
@@ -49,19 +50,13 @@ class Proposta {
     }
 
     /**
-     * @return the valorParcela
+     * @return the valorParcelas
      */
-    public float getValorParcela() {
-        return valorParcela;
+    public float getValorParcelas() {
+        return total / numeroParcelas;
     }
 
-    /**
-     * @param valorParcela the valorParcela to set
-     */
-    public void setValorParcela(float valorParcela) {
-        this.valorParcela = valorParcela;
-    }
     private float total;
     private int numeroParcelas;
-    private float valorParcela;
+    private float valorParcelas;
 }
