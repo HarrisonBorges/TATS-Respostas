@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadora;
 
-/**
- *
- * @author Harrison
- */
 public class Funcionario {
-    
+
+    private String nome;
+    private String email;
+    float salarioBase;
+    String cargo;
+
     /**
      * @return the nome
      */
@@ -39,36 +35,24 @@ public class Funcionario {
         this.email = email;
     }
 
-    /**
-     * @return the salarioBase
-     */
-    public float getSalarioBase() {
-        return salarioBase;
-    }
-
-    /**
-     * @param salarioBase the salarioBase to set
-     */
-    public void setSalarioBase(float salarioBase) {
+    public Funcionario(String cargo, float salarioBase) {
+        this.cargo = cargo;
         this.salarioBase = salarioBase;
     }
 
-    /**
-     * @return the cargo
-     */
     public String getCargo() {
         return cargo;
     }
 
-    /**
-     * @param cargo the cargo to set
-     */
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setCargo(String papel) {
+        this.cargo = papel;
     }
-    private String nome;
-    private String email;
-    private float salarioBase;
-    private String cargo;   
 
+    public double getSalarioBase() {
+        return salarioBase;
+    }
+
+    public void setSalarioBase(float salarioBase) {
+        this.salarioBase = salarioBase;
+    }
 }

@@ -1,34 +1,58 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadora;
 
-/**
- *
- * @author Harrison
- */
 public class CalculadoraSalarioTDD {
-    
-    public int calcDesconto(Funcionario funcionario) {
 
-        int valorDoDesconto = 0;
-        switch (funcionario.getFuncao()) {
+    public int calculoDeDesconto(Funcionario funcionario) {
+        int desconto = 0;
+        switch (funcionario.getCargo()) {
             case "DESENVOLVEDOR":
-                valorDoDesconto = descontoDoDesenvolvedor(funcionario);
+                desconto = descontoDesenvolvedor(funcionario);
                 break;
             case "DBA":
-                valorDoDesconto = descontoDoDBA(funcionario);
+                desconto = descontoDBA(funcionario);
                 break;
             case "TESTADOR":
-                valorDoDesconto = descontoDoTestador(funcionario);
+                desconto = descontoTestador(funcionario);
                 break;
             case "GERENTE":
-                valorDoDesconto = descontoDoGerente(funcionario);
+                desconto = descontoGerente(funcionario);
                 break;
+            default:
+                System.out.println("CARGO INEXISTENTE!");
         }
-        return valorDoDesconto;
+        return desconto;
     }
-  
+
+    private int descontoDesenvolvedor(Funcionario funcionario) {
+        if (funcionario.getSalarioBase() >= 3000.0) {
+            return 20;
+        }
+        return 10;
+    }
+
+    private int descontoDBA(Funcionario funcionario) {
+        if (funcionario.getSalarioBase() >= 2000.0) {
+            return 25;
+        }
+        return 15;
+    }
+
+    private int descontoTestador(Funcionario funcionario) {
+        if (funcionario.getSalarioBase() >= 2000.00) {
+            return 25;
+        }
+        return 15;
+    }
+
+    private int descontoGerente(Funcionario funcionario) {
+        if (funcionario.getSalarioBase() >= 5000.0) {
+            return 30;
+        }
+        return 20;
+    }
+
+    public double calculoDoSalario(Funcionario funcionario) {
+        return funcionario.salarioBase - funcionario.salarioBase * this.calculoDeDesconto(funcionario) / 100;
+    }
+
 }
