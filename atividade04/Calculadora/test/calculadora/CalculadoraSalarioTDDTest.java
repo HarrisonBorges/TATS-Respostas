@@ -18,4 +18,14 @@ public class CalculadoraSalarioTDDTest {
         assertEquals(20, calculadora.calculoDeDesconto(new Funcionario("DESENVOLVEDOR", 3000.00f)));
     }
 
+    @Test
+    public void salarioMenor3000Desenvolvedor() {
+        assertEquals(10, calculadora.calculoDeDesconto(new Funcionario("DESENVOLVEDOR", 1500.00f)));
+    }
+
+    @Test
+    public void salarioDesenvolvedor() {
+        assertEquals(4000.00f, calculadora.calculoDoSalario(new Funcionario("DESENVOLVEDOR", 5000.00f)), 0.0000001);
+    }
+
 }
