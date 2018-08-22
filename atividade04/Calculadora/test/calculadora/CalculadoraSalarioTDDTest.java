@@ -27,21 +27,31 @@ public class CalculadoraSalarioTDDTest {
     public void salarioDesenvolvedor() {
         assertEquals(4000.00f, calculadora.calculoDoSalario(new Funcionario("DESENVOLVEDOR", 5000.00f)), 0.0000001);
     }
-    
-     @Test
+
+    @Test
     public void salarioMaiorIgual2000DBA() {
         assertEquals(25, calculadora.calculoDeDesconto(new Funcionario("DBA", 2000.00f)));
     }
-    
-     @Test
+
+    @Test
     public void salarioMenor2000DBA() {
         assertEquals(15, calculadora.calculoDeDesconto(new Funcionario("DBA", 1900.00f)));
     }
 
-     @Test
+    @Test
     public void salarioMaiorIgual2000Testador() {
         assertEquals(25, calculadora.calculoDeDesconto(new Funcionario("TESTADOR", 2000.00f)));
-    }   
-    
+    }
 
+    @Test
+    public void salarioMenor2000Testador() {
+        assertEquals(175, calculadora.calculoDeDesconto(new Funcionario("TESTADOR", 1800.00f)));
+    }
+    
+    @Test
+    public void salarioTestador() {
+        assertEquals(467.50f, calculadora.calculoDoSalario(new Funcionario("TESTADOR", 550.00f)), 0.0000001);
+    }
+    
+    
 }
